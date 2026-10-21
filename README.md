@@ -1,2 +1,2 @@
 # Projeto_Sistema_Controle_Academia
-Criar um Projeto que buscar auxiliar no controle e atividades de uma academia.
+Desenvolver um sistema que tem como objetivo, auxiliar no controle e atividades de uma academia.
