@@ -1,17 +1,27 @@
+from aluno import Aluno
+
 class Pagamento:
-    def __init__(self, valor: float, data: str, situacao: str = "Pendente"):
+    def __init__(self, valor: float, data: str, aluno: Aluno, pago: bool = False):
         self.__valor = valor
         self.__data = data
-        self.__situacao = situacao
+        self.__pago = pago
+        self.__aluno = aluno
 
-    def valor(self):
+    def get_valor(self):
         return self.__valor
 
-    def data(self):
+    def get_data(self):
         return self.__data
 
-    def situacao(self):
-        return self.__situacao
+    def get_aluno(self):
+        return self.__aluno
 
-    def situacao(self, nova_situacao: str):
-        self.__situacao = nova_situacao
+    def get_pago(self):
+        return self.__pago
+
+    def registrar_pagamento(self):
+        self.__pago = True
+        print(f"Pagamento de R$ {self.__valor:.2f} registrado com sucesso para {self.__aluno.get_nome()}.")
+
+    def verificar_status(self) -> bool:
+        return self.__pago

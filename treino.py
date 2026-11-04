@@ -1,12 +1,32 @@
+from exercicio import Exercicio
+
 class Treino:
-    def __init__(self, nome_treino: str):
-        self.__nome_treino = nome_treino
-        self.__exercicios = [] ###lembrar de listar os exercios depois
+    def __init__(self, nome: str, objetivo: str):
+        self.__nome = nome
+        self.__objetivo = objetivo
+        self.__exercicios = []
 
+    def get_nome(self):
+        return self.__nome
 
-    def nome_treino(self):
-        return self.__nome_treino
+    def get_objetivo(self):
+        return self.__objetivo
 
-    
-    def exercicios(self):
+    def get_exercicios(self):
         return self.__exercicios
+
+    def adicionar_exercicio(self, exercicio: Exercicio):
+        self.__exercicios.append(exercicio)
+
+    def remover_exercicio(self, nome: str):
+        self.__exercicios = [e for e in self.__exercicios if e.get_nome() != nome]
+
+    def exibir_treino(self):
+        print(f"--- Treino: {self.__nome} | Objetivo: {self.__objetivo} ---")
+        if not self.__exercicios:
+            print("Nenhum exercício cadastrado.")
+            return
+        for i, exercicio in enumerate(self.__exercicios, 1):
+            print(f"{i}.", end=" ")
+            exercicio.exibir_exercicio()
+

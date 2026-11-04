@@ -1,28 +1,56 @@
+from plano import Plano
+from treino import Treino
+
 class Aluno:
-    def __init__(self, nome: str, cpf: str, telefone: str, data_nascimento: str, situacao_matricula: str = "Ativo"):
+    def __init__(self, nome: str, cpf: str, telefone: str, data_nascimento: str, matricula_ativa: bool = True, plano: Plano = None):
         self.__nome = nome
         self.__cpf = cpf
         self.__telefone = telefone
         self.__data_nascimento = data_nascimento
-        self.__situacao_matricula = situacao_matricula
+        self.__matricula_ativa = matricula_ativa
+        self.__plano = plano
+        self.__treinos = []
 
-    def nome(self):
+    def get_nome(self):
         return self.__nome
 
-    def cpf(self):
+    def get_cpf(self):
         return self.__cpf
     
-    def telefone(self):
+    def get_telefone(self):
         return self.__telefone
 
-    def telefone(self, novo_telefone: str):
+    def set_telefone(self, novo_telefone: str):
         self.__telefone = novo_telefone
 
-    def data_nascimento(self):
+    def get_data_nascimento(self):
         return self.__data_nascimento
 
-    def situacao_matricula(self):
-        return self.__situacao_matricula
+    def get_matricula_ativa(self):
+        return self.__matricula_ativa
 
-    def situacao_matricula(self, nova_situacao: str):
-        self.__situacao_matricula = nova_situacao
+    def set_matricula_ativa(self, status: bool):
+        self.__matricula_ativa = status
+
+    def get_plano(self):
+        return self.__plano
+
+    def set_plano(self, novo_plano: Plano):
+        self.__plano = novo_plano
+
+    def atualizar_dados(self, telefone: str = None, matricula_ativa: bool = None, plano: Plano = None):
+        if telefone:
+            self.__telefone = telefone
+        if matricula_ativa is not None:
+            self.__matricula_ativa = matricula_ativa
+        if plano:
+            self.__plano = plano
+
+    def verificar_matricula(self) -> bool:
+        return self.__matricula_ativa
+
+    def adicionar_treino(self, treino: Treino):
+        self.__treinos.append(treino)
+
+    def listar_treinos(self) -> list:
+        return self.__treinos
