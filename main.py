@@ -52,7 +52,7 @@ if __name__ == "__main__":
             if duracao_str.lower() == "voltar": continue
             duracao = int(duracao_str)
             
-            valor_str = input("Valor do plano ( BASIC 299.90) (VIP 599.90): ")
+            valor_str = input("Valor do plano ( BASIC 299.99) (VIP 599.99): ")
             if valor_str.lower() == "voltar": continue
             valor = float(valor_str)
             
