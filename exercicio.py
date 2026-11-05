@@ -5,16 +5,16 @@ class Exercicio:
         self.__repeticoes = repeticoes
         self.__carga = carga
 
-    def get_nome(self):
+    def get_nome(self) -> str:
         return self.__nome
 
-    def get_series(self):
+    def get_series(self) -> int:
         return self.__series
 
-    def get_repeticoes(self):
+    def get_repeticoes(self) -> int:
         return self.__repeticoes
 
-    def get_carga(self):
+    def get_carga(self) -> float:
         return self.__carga
 
     def alterar_prescricao(self, series: int, repeticoes: int, carga: float):
@@ -23,4 +23,4 @@ class Exercicio:
         self.__carga = carga
 
     def exibir_exercicio(self):
-        print(f"Exercício: {self.__nome} | Séries: {self.__series} | Repetições: {self.__repeticoes} | Carga: {self.__carga}kg") 
+        print(f"Exercício: {self.__nome} | Séries: {self.__series} | Repetições: {self.__repeticoes} | Carga: {self.__carga}kg")

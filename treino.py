@@ -6,13 +6,13 @@ class Treino:
         self.__objetivo = objetivo
         self.__exercicios = []
 
-    def get_nome(self):
+    def get_nome(self) -> str:
         return self.__nome
 
-    def get_objetivo(self):
+    def get_objetivo(self) -> str:
         return self.__objetivo
 
-    def get_exercicios(self):
+    def get_exercicios(self) -> list:
         return self.__exercicios
 
     def adicionar_exercicio(self, exercicio: Exercicio):
@@ -29,4 +29,3 @@ class Treino:
         for i, exercicio in enumerate(self.__exercicios, 1):
             print(f"{i}.", end=" ")
             exercicio.exibir_exercicio()
-

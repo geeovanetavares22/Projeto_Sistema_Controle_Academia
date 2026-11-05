@@ -4,13 +4,13 @@ class Plano:
         self.__duracao_meses = duracao_meses
         self.__valor = valor
 
-    def get_nome(self):
+    def get_nome(self) -> str:
         return self.__nome
 
-    def get_duracao_meses(self):
+    def get_duracao_meses(self) -> int:
         return self.__duracao_meses
 
-    def get_valor(self):
+    def get_valor(self) -> float:
         return self.__valor
 
     def set_valor(self, novo_valor: float):

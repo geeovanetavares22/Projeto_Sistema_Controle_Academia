@@ -7,16 +7,16 @@ class Pagamento:
         self.__pago = pago
         self.__aluno = aluno
 
-    def get_valor(self):
+    def get_valor(self) -> float:
         return self.__valor
 
-    def get_data(self):
+    def get_data(self) -> str:
         return self.__data
 
-    def get_aluno(self):
+    def get_aluno(self) -> Aluno:
         return self.__aluno
 
-    def get_pago(self):
+    def get_pago(self) -> bool:
         return self.__pago
 
     def registrar_pagamento(self):

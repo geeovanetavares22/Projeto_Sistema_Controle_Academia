@@ -9,7 +9,7 @@ class Academia:
         self.__planos = []
         self.__treinos = []
 
-    def get_nome(self):
+    def get_nome(self) -> str:
         return self.__nome
 
     def cadastrar_aluno(self, aluno: Aluno):

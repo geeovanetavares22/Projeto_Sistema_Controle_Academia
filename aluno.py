@@ -11,28 +11,28 @@ class Aluno:
         self.__plano = plano
         self.__treinos = []
 
-    def get_nome(self):
+    def get_nome(self) -> str:
         return self.__nome
 
-    def get_cpf(self):
+    def get_cpf(self) -> str:
         return self.__cpf
     
-    def get_telefone(self):
+    def get_telefone(self) -> str:
         return self.__telefone
 
     def set_telefone(self, novo_telefone: str):
         self.__telefone = novo_telefone
 
-    def get_data_nascimento(self):
+    def get_data_nascimento(self) -> str:
         return self.__data_nascimento
 
-    def get_matricula_ativa(self):
+    def get_matricula_ativa(self) -> bool:
         return self.__matricula_ativa
 
     def set_matricula_ativa(self, status: bool):
         self.__matricula_ativa = status
 
-    def get_plano(self):
+    def get_plano(self) -> Plano:
         return self.__plano
 
     def set_plano(self, novo_plano: Plano):
