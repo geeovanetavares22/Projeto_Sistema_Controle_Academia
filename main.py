@@ -24,7 +24,7 @@ if __name__ == "__main__":
         opcao = input("\nEscolha uma opção: ")
 
         if opcao == "1":
-            print("\n--- Cadastro de Aluno (digite 'voltar' para cancelar) ---")
+            print("\n--- Cadastro de Aluno (digite 'voltar' a qualquer momento para cancelar) ---")
             
             nome = input("Nome do aluno: ")
             if nome.lower() == "voltar": continue
@@ -40,21 +40,30 @@ if __name__ == "__main__":
             
             aluno = Aluno(nome, cpf, telefone, nascimento)
             academia.cadastrar_aluno(aluno)
-            print(f"Aluno {nome} cadastrado com sucesso!")
+            print(f"Aluno(a) {nome} cadastrado com sucesso!")
 
         elif opcao == "2":
             print("\n--- Cadastro de Plano (digite 'voltar' para cancelar) ---")
+            print("Escolha o tipo de plano:")
+            print("1. Plano BASIC (R$ 229.90)")
+            print("2. Plano VIP (R$ 599.90)")
             
-            nome_plano = input("Nome do plano (ex: Mensal, Anual): ")
-            if nome_plano.lower() == "voltar": continue
+            escolha = input("\nDigite o número da opção (1 ou 2): ")
+            if escolha.lower() == "voltar": continue
+            
+            if escolha == "1":
+                nome_plano = "BASIC"
+                valor = 229.90
+            elif escolha == "2":
+                nome_plano = "VIP"
+                valor = 599.90
+            else:
+                print("\nOpção inválida! Escolha 1 ou 2.")
+                continue
             
             duracao_str = input("Duração em meses: ")
             if duracao_str.lower() == "voltar": continue
             duracao = int(duracao_str)
-            
-            valor_str = input("Valor do plano ( BASIC 299.90) (VIP 599.90): ")
-            if valor_str.lower() == "voltar": continue
-            valor = float(valor_str)
             
             plano = Plano(nome_plano, duracao, valor)
             academia.cadastrar_plano(plano)
@@ -138,11 +147,11 @@ if __name__ == "__main__":
             else:
                 for t in treinos:
                     t.exibir_treino()
-                    print("-" * 30)
+                    print("\n" * 2)
             input("\nPressione Enter para voltar ao menu...")
 
         elif opcao == "0":
-            print("\nEncerrando o sistema. Até logo!")
+            print("\nEncerrando o sistema. Até o proximo treino!")
             break
         else:
             print("\nOpção inválida! Escolha um número de 0 a 6.")

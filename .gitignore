@@ -1,0 +1,12 @@
+# Ignorar pastas e ficheiros do Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Ambientes virtuais (se usar)
+venv/
+env/
+
+# Configurações do editor
+.vscode/
+.DS_Store
