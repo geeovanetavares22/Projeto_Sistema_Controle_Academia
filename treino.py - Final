@@ -1,0 +1,59 @@
+from exercicio import Exercicio
+
+
+class Treino:
+    def __init__(self, nome: str, objetivo: str):
+        self.__nome = nome
+        self.__objetivo = objetivo
+
+        # impacto: armazena os exercícios que compõem este treino.
+        self.__exercicios = []
+
+        # impacto: permite identificar diretamente o aluno associado ao treino.
+        self.__aluno = None
+
+    def get_nome(self):
+        return self.__nome
+
+    def get_objetivo(self):
+        return self.__objetivo
+
+    def get_exercicios(self):
+        return self.__exercicios
+
+    def adicionar_exercicio(self, exercicio: Exercicio):
+        # impacto: adiciona um exercício à lista do treino atual.
+        self.__exercicios.append(exercicio)
+
+    def remover_exercicio(self, nome: str):
+        # impacto: remove da lista os exercícios que possuem o nome informado.
+        self.__exercicios = [
+            exercicio
+            for exercicio in self.__exercicios
+            if exercicio.get_nome() != nome
+        ]
+
+    def get_aluno(self):
+        # impacto: permite que a tela de treinos descubra qual aluno está associado.
+        return self.__aluno
+
+    def definir_aluno(self, aluno):
+        # impacto: mantém a referência do aluno dentro do próprio treino.
+        if self.__aluno is not None and self.__aluno is not aluno:
+            raise ValueError("Treino já possui um aluno vinculado.")
+
+        self.__aluno = aluno
+
+    def exibir_treino(self):
+        print(
+            f"--- Treino: {self.__nome} | "
+            f"Objetivo: {self.__objetivo} ---"
+        )
+
+        if not self.__exercicios:
+            print("Nenhum exercício cadastrado.")
+            return
+
+        for i, exercicio in enumerate(self.__exercicios, 1):
+            print(f"{i}.", end=" ")
+            exercicio.exibir_exercicio()
