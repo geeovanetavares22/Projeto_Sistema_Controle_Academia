@@ -1,0 +1,125 @@
+            nome_ex = simpledialog.askstring("Exercício", "Nome:")
+            if not nome_ex:
+                continue
+
+            series = simpledialog.askinteger("Exercício", "Número de séries:")
+            repeticoes = simpledialog.askinteger("Exercício", "Repetições:")
+            carga = simpledialog.askfloat("Exercício", "Carga em kg:")
+
+            if series is None or repeticoes is None or carga is None:
+                messagebox.showwarning("Atenção", "Dados incompletos.")
+                continue
+
+            if series <= 0 or repeticoes <= 0 or carga < 0:
+                messagebox.showerror("Erro", "Informe valores válidos.")
+                continue
+
+            # impacto: cada exercício fica armazenado dentro deste treino.
+            treino.adicionar_exercicio(
+                Exercicio(nome_ex, series, repeticoes, carga)
+            )
+
+        # associação do treino ao aluno
+        # impacto: associa o treino ao aluno; a classe aluno também registra o vínculo no treino.
+        aluno.adicionar_treino(treino)
+
+        # registro do treino na academia
+        # impacto: mantém o treino no cadastro geral da academia.
+        self.academia.cadastrar_treino(treino)
+
+        messagebox.showinfo(
+            "Sucesso",
+            f"Treino cadastrado para o aluno {aluno.get_nome()}!"
+        )
+
+        self.inicio()
+
+    # consulta dos alunos e dos treinos associados
+    def listar_alunos(self):
+        alunos = self.academia.listar_alunos()
+        texto = "ALUNOS CADASTRADOS\n\n"
+
+        for a in alunos:
+            status = "Ativo" if a.get_matricula_ativa() else "Inativo"
+
+            texto += (
+                f"Nome: {a.get_nome()}\n"
+                f"CPF: {a.get_cpf()}\n"
+                f"Telefone: {a.get_telefone()}\n"
+                f"Matrícula: {status}\n"
+            )
+
+            # impacto: recupera somente os treinos vinculados ao aluno atual.
+            treinos = a.listar_treinos()
+            texto += "Treinos:\n"
+
+            texto += "\n".join(
+                f" - {t.get_nome()}" for t in treinos
+            ) if treinos else " Nenhum treino cadastrado."
+
+            texto += "\n\n"
+
+        messagebox.showinfo(
+            "Alunos",
+            texto if alunos else "Nenhum aluno cadastrado."
+        )
+
+    # consulta dos planos cadastrados
+    def listar_planos(self):
+        planos = self.academia.listar_planos()
+        texto = "PLANOS CADASTRADOS\n\n"
+
+        for p in planos:
+            texto += (
+                f"Plano: {p.get_nome()}\n"
+                f"Duração: {p.get_duracao_meses()} meses\n"
+                f"Valor: R$ {p.get_valor():.2f}\n"
+                f"Total: R$ {p.calcular_valor_total():.2f}\n\n"
+            )
+
+        messagebox.showinfo(
+            "Planos",
+            texto if planos else "Nenhum plano cadastrado."
+        )
+
+    # consulta dos treinos, exercícios e aluno associado
+    def listar_treinos(self):
+        treinos = self.academia.listar_treinos()
+        alunos = self.academia.listar_alunos()
+        texto = "TREINOS CADASTRADOS\n\n"
+
+        for t in treinos:
+            # impacto: consulta diretamente o aluno associado ao treino.
+            aluno = t.get_aluno()
+
+            texto += (
+                f"Aluno: {aluno.get_nome() if aluno else 'Não vinculado'}\n"
+                f"Treino: {t.get_nome()}\n"
+                f"Objetivo: {t.get_objetivo()}\n"
+                "Exercícios:\n"
+            )
+
+            # impacto: recupera os exercícios que pertencem ao treino atual.
+            exercicios = t.get_exercicios()
+
+            for e in exercicios:
+                texto += (
+                    f"- {e.get_nome()} | {e.get_series()} séries | "
+                    f"{e.get_repeticoes()} repetições | {e.get_carga()} kg\n"
+                )
+
+            if not exercicios:
+                texto += "Nenhum exercício cadastrado.\n"
+
+            texto += "\n"
+
+        messagebox.showinfo(
+            "Treinos",
+            texto if treinos else "Nenhum treino cadastrado."
+        )
+
+
+# inicialização do sistema
+janela = tk.Tk()
+app = SistemaAcademia(janela)
+janela.mainloop()
