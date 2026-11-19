@@ -7,7 +7,7 @@ from plano import Plano
 from treino import Treino
 from exercicio import Exercicio
 
-# CORES
+
 LARANJA = "#FF5A00"
 PRETO = "#171717"
 CINZA = "#252525"
@@ -25,7 +25,7 @@ class SistemaAcademia:
 
         self.academia = Academia("Magnata Academia")
 
-        # CABEÇALHO
+       
         topo = tk.Frame(janela, bg=PRETO, height=75)
         topo.pack(fill="x")
         topo.pack_propagate(False)
@@ -51,7 +51,7 @@ class SistemaAcademia:
         self.conteudo.pack(side="left", fill="both", expand=True,
                            padx=28, pady=25)
 
-        # OPÇÕES DO MENU
+       
         opcoes = [
             ("Início", self.inicio),
             ("Cadastrar Aluno", self.cadastrar_aluno),
@@ -92,7 +92,7 @@ class SistemaAcademia:
                   font=("Arial", 10, "bold"), padx=15,
                   pady=8, cursor="hand2").pack(anchor="w", pady=7)
 
-    # TELA INICIAL
+    
     def inicio(self):
         self.limpar()
         self.titulo("Bem-vindo!")
@@ -133,7 +133,7 @@ class SistemaAcademia:
         ]:
             self.botao(texto, funcao)
 
-    # CADASTRAR ALUNO
+    
     def cadastrar_aluno(self):
         nome = simpledialog.askstring("Aluno", "Nome do aluno:")
         if not nome:
@@ -174,7 +174,7 @@ class SistemaAcademia:
         messagebox.showinfo("Sucesso", "Plano cadastrado com sucesso!")
         self.inicio()
 
-    # CADASTRAR TREINO E RELACIONAR COM ALUNO
+    
     def cadastrar_treino(self):
         alunos = self.academia.listar_alunos()
 
@@ -182,7 +182,7 @@ class SistemaAcademia:
             messagebox.showwarning("Atenção", "Cadastre um aluno primeiro.")
             return
 
-        # ESCOLHER ALUNO
+        
         lista = "\n".join(
             f"{i + 1} - {a.get_nome()}"
             for i, a in enumerate(alunos)
@@ -202,7 +202,7 @@ class SistemaAcademia:
 
         aluno = alunos[escolha - 1]
 
-        # DADOS DO TREINO
+        
         nome = simpledialog.askstring("Treino", "Nome do treino:")
         if not nome:
             return
@@ -213,7 +213,7 @@ class SistemaAcademia:
 
         treino = Treino(nome, objetivo)
 
-        # ADICIONAR EXERCÍCIOS
+        
         while messagebox.askyesno("Exercícios", "Deseja adicionar um exercício?"):
 
             nome_ex = simpledialog.askstring("Exercício", "Nome:")
@@ -236,7 +236,7 @@ class SistemaAcademia:
                 Exercicio(nome_ex, series, repeticoes, carga)
             )
 
-        # RELACIONAMENTO ENTRE ALUNO E TREINO
+        
         aluno.adicionar_treino(treino)
 
         # CADASTRA O TREINO NA ACADEMIA
@@ -249,7 +249,7 @@ class SistemaAcademia:
 
         self.inicio()
 
-    # LISTAR ALUNOS E SEUS TREINOS
+    
     def listar_alunos(self):
         alunos = self.academia.listar_alunos()
         texto = "ALUNOS CADASTRADOS\n\n"
@@ -278,7 +278,7 @@ class SistemaAcademia:
             texto if alunos else "Nenhum aluno cadastrado."
         )
 
-    # LISTAR PLANOS
+    
     def listar_planos(self):
         planos = self.academia.listar_planos()
         texto = "PLANOS CADASTRADOS\n\n"
@@ -296,7 +296,7 @@ class SistemaAcademia:
             texto if planos else "Nenhum plano cadastrado."
         )
 
-    # LISTAR TREINOS, EXERCÍCIOS E ALUNO RESPONSÁVEL
+    
     def listar_treinos(self):
         treinos = self.academia.listar_treinos()
         alunos = self.academia.listar_alunos()
@@ -334,7 +334,7 @@ class SistemaAcademia:
         )
 
 
-# INICIAR SISTEMA
+
 janela = tk.Tk()
 app = SistemaAcademia(janela)
 janela.mainloop()
