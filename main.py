@@ -46,7 +46,7 @@ if __name__ == "__main__":
             print("\n--- Cadastro de Plano (digite 'voltar' para cancelar) ---")
             print("Escolha o tipo de plano:")
             print("1. Plano BASIC (R$ 299.90)")
-            print("2. Plano VIP (R$ 599.90)")
+            print("2. Plano VIP (R$ 699.90)")
             
             escolha = input("\nDigite o número da opção (1 ou 2): ")
             if escolha.lower() == "voltar": continue
@@ -56,7 +56,7 @@ if __name__ == "__main__":
                 valor = 299.90
             elif escolha == "2":
                 nome_plano = "VIP"
-                valor = 599.90
+                valor = 699.90
             else:
                 print("\nOpção inválida! Escolha 1 ou 2.")
                 continue
