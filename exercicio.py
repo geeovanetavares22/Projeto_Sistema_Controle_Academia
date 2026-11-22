@@ -1,3 +1,4 @@
+
 class Exercicio:
     def __init__(self, nome: str, series: int, repeticoes: int, carga: float):
         self.__nome = nome

@@ -1,3 +1,4 @@
+
 from academia import Academia
 from aluno import Aluno
 from plano import Plano

@@ -2,6 +2,7 @@ from aluno import Aluno
 from plano import Plano
 from treino import Treino
 
+
 class Academia:
     def __init__(self, nome: str):
         self.__nome = nome

@@ -7,7 +7,7 @@ from treino import Treino
 from exercicio import Exercicio
 
 LARANJA, LARANJA_ESCURO, PRETO, CINZA, FUNDO, BRANCO, TEXTO = (
-    "#FF5A00", "#E64D00", "#171717", "#242424", "#F4F4F4", "#FFFFFF", "#252525"
+    "#FF5A00", "#E64D00", "#171717", "#242424", "#F4F4F4", "#FFFFFF",  "#252525"
 )
 
 class AcademiaApp:

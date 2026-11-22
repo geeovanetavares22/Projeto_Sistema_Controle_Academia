@@ -1,3 +1,4 @@
+
 from exercicio import Exercicio
 
 class Treino:
